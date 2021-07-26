@@ -1,10 +1,16 @@
-package com.agency04.sbss.pizza.pizzeriaPojos;
+package com.agency04.sbss.pizza.model.pizzeriaPojos;
 
-import com.agency04.sbss.pizza.Pizza;
-import com.agency04.sbss.pizza.PizzeriaService;
+import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PizzeriaLastrada implements PizzeriaService {
+
+    @Value("${lastrada.name}")
     private String name;
+
+    @Value("${lastrada.address}")
     private String address;
 
     @Override

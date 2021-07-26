@@ -1,22 +1,28 @@
-package com.agency04.sbss.pizza.pizzaPojos;
+package com.agency04.sbss.pizza.model.pizzaPojos;
 
-import com.agency04.sbss.pizza.Pizza;
-import com.agency04.sbss.pizza.PizzaIngredient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuatroFormaggi  implements Pizza {
+@Component
+public class Calzone implements Pizza {
     private List<PizzaIngredient> ingredients = new ArrayList<>();
 
-    public QuatroFormaggi(){
+    @Value("${calzone.name}")
+    private String name;
+
+    public Calzone(){
         ingredients.add(PizzaIngredient.TOMATO_SAUCE);
         ingredients.add(PizzaIngredient.MOZZARELLA);
-        ingredients.add(PizzaIngredient.PARMESAN);
+        ingredients.add(PizzaIngredient.HAM);
+        ingredients.add(PizzaIngredient.ANCHOVIES);
         ingredients.add(PizzaIngredient.OREGANO);
     }
+
     @Override
     public String getName() {
-        return "Quatro Formaggi";
+        return this.name;
     }
 
     @Override

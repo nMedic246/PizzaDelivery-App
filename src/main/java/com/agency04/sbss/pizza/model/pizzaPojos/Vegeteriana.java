@@ -1,22 +1,26 @@
-package com.agency04.sbss.pizza.pizzaPojos;
+package com.agency04.sbss.pizza.model.pizzaPojos;
 
-import com.agency04.sbss.pizza.Pizza;
-import com.agency04.sbss.pizza.PizzaIngredient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Margherita implements Pizza {
+@Component
+public class Vegeteriana implements Pizza {
     private List<PizzaIngredient> ingredients = new ArrayList<>();
 
-    public Margherita(){
+    @Value("${vegeteriana.name}")
+    private String name;
+
+    public Vegeteriana(){
         ingredients.add(PizzaIngredient.TOMATO_SAUCE);
         ingredients.add(PizzaIngredient.MOZZARELLA);
-        ingredients.add(PizzaIngredient.OREGANO);
+        ingredients.add(PizzaIngredient.VEGETABLES);
     }
     @Override
     public String getName() {
-        return "Margherita";
+        return this.name;
     }
 
     @Override

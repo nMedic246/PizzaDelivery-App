@@ -1,4 +1,6 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.model.pizzaPojos;
+
+import com.agency04.sbss.pizza.model.pizzaPojos.PizzaIngredient;
 
 import java.util.List;
 

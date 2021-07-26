@@ -1,22 +1,21 @@
 package com.agency04.sbss.pizza;
 
-import com.agency04.sbss.pizza.pizzaPojos.Margherita;
-import com.agency04.sbss.pizza.pizzaPojos.QuatroFormaggi;
-import com.agency04.sbss.pizza.pizzeriaPojos.PizzeriaLastrada;
+import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.model.pizzeriaPojos.PizzeriaService;
+import com.agency04.sbss.pizza.service.PizzaDeliveryService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class PizzaApp {
 
     public static void main(String[] args) throws InterruptedException {
-        Pizza pizza1 = new Margherita();
-        Pizza pizza2 = new QuatroFormaggi();
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         PizzaDeliveryService pizzaDeliveryService  = context.getBean("pizzaDeliveryService",PizzaDeliveryService.class);
+        Pizza pizza = context.getBean("quatroFormaggi",Pizza.class);
 
-        System.out.println(pizzaDeliveryService.orderPizza(pizza2));
+        System.out.println(pizzaDeliveryService.orderPizza(pizza));
 
-        PizzeriaService pizzeriaService = context.getBean("Dominos",PizzeriaService.class);
+        PizzeriaService pizzeriaService = context.getBean("dominos",PizzeriaService.class);
         PizzeriaService pizzeriaService2 = context.getBean("pizzeriaLastrada",PizzeriaService.class);
 
         System.out.println(pizzeriaService.getAddress());
