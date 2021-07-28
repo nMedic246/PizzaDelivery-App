@@ -1,7 +1,7 @@
 package com.agency04.sbss.pizza;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
-import com.agency04.sbss.pizza.model.pizzeriaPojos.PizzeriaService;
+import com.agency04.sbss.pizza.service.PizzeriaService;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,7 +12,7 @@ public class PizzaApp {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         PizzaDeliveryService pizzaDeliveryService  = context.getBean("pizzaDeliveryService",PizzaDeliveryService.class);
         Pizza pizza = context.getBean("quatroFormaggi",Pizza.class);
-
+        
         System.out.println(pizzaDeliveryService.orderPizza(pizza));
 
         PizzeriaService pizzeriaService = context.getBean("dominos",PizzeriaService.class);

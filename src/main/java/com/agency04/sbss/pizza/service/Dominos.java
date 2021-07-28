@@ -1,16 +1,16 @@
-package com.agency04.sbss.pizza.model.pizzeriaPojos;
+package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PizzeriaLastrada implements PizzeriaService {
+public class Dominos implements PizzeriaService {
 
-    @Value("${lastrada.name}")
+    @Value("${dominos.name}")
     private String name;
 
-    @Value("${lastrada.address}")
+    @Value("${dominos.address}")
     private String address;
 
     @Override
@@ -27,7 +27,6 @@ public class PizzeriaLastrada implements PizzeriaService {
     public void setName(String name) {
         this.name = name;
     }
-
     @Override
     public void setAddress(String address) {
         this.address = address;
@@ -35,7 +34,6 @@ public class PizzeriaLastrada implements PizzeriaService {
 
     @Override
     public void makePizza(Pizza pizza) {
-        System.out.println(pizza.getName()+" is making it's way to the oven!");
+        System.out.println("Dominos team is preparing your "+pizza.getName()+"!");
     }
-
 }

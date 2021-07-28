@@ -3,22 +3,16 @@ package com.agency04.sbss.pizza.model.pizzaPojos;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class Calzone implements Pizza {
-    private List<PizzaIngredient> ingredients = new ArrayList<>();
+    private final List<PizzaIngredient> ingredients = Arrays.asList(PizzaIngredient.TOMATO_SAUCE,PizzaIngredient.MOZZARELLA,
+            PizzaIngredient.HAM,PizzaIngredient.ANCHOVIES,PizzaIngredient.OREGANO);
 
     @Value("${calzone.name}")
     private String name;
-
-    public Calzone(){
-        ingredients.add(PizzaIngredient.TOMATO_SAUCE);
-        ingredients.add(PizzaIngredient.MOZZARELLA);
-        ingredients.add(PizzaIngredient.HAM);
-        ingredients.add(PizzaIngredient.ANCHOVIES);
-        ingredients.add(PizzaIngredient.OREGANO);
-    }
 
     @Override
     public String getName() {
@@ -27,9 +21,6 @@ public class Calzone implements Pizza {
 
     @Override
     public List<PizzaIngredient> getIngredients() {
-        for(PizzaIngredient ingredient:ingredients){
-            System.out.println(ingredient);
-        }
         return ingredients;
     }
 }

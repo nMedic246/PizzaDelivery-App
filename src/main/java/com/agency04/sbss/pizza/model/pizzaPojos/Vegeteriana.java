@@ -4,20 +4,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class Vegeteriana implements Pizza {
-    private List<PizzaIngredient> ingredients = new ArrayList<>();
+    private List<PizzaIngredient> ingredients = Arrays.asList(PizzaIngredient.TOMATO_SAUCE,PizzaIngredient.MOZZARELLA,
+            PizzaIngredient.VEGETABLES);
 
     @Value("${vegeteriana.name}")
     private String name;
 
-    public Vegeteriana(){
-        ingredients.add(PizzaIngredient.TOMATO_SAUCE);
-        ingredients.add(PizzaIngredient.MOZZARELLA);
-        ingredients.add(PizzaIngredient.VEGETABLES);
-    }
     @Override
     public String getName() {
         return this.name;
@@ -25,9 +22,6 @@ public class Vegeteriana implements Pizza {
 
     @Override
     public List<PizzaIngredient> getIngredients() {
-        for(PizzaIngredient ingredient:ingredients){
-            System.out.println(ingredient);
-        }
         return ingredients;
     }
 }
