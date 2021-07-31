@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component
-@Scope("prototype")
 public class PizzaDeliveryService {
 
     @Qualifier("dominos")
