@@ -20,15 +20,15 @@ public class PizzaApp {
         //because it's the same object, and if the scope is prototype then the location is different
         //and the @PreDestroy method will not be called.
         System.out.println("The beans are pointing to the same location: "+result);
-/*
-        System.out.println(pizzaDeliveryService.orderPizza(pizza));
+
+        /*System.out.println(pizzaDeliveryService.orderPizza(pizza));
 
         PizzeriaService pizzeriaService = context.getBean("dominos",PizzeriaService.class);
         PizzeriaService pizzeriaService2 = context.getBean("pizzeriaLastrada",PizzeriaService.class);
 
         System.out.println(pizzeriaService.getAddress());
-        System.out.println(pizzeriaService2.getName());*/
-
+        System.out.println(pizzeriaService2.getName());
+        */
         context.close();
     }
 

@@ -25,12 +25,12 @@ public class PizzaDeliveryService {
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
-        System.out.println("Inside the init method!");
+        System.out.println("Inside the pizzeriaService init method!");
     }
 
     //define my destroy method
     @PreDestroy
     public void doMyCleanupStuff(){
-        System.out.println("Inside the destroy method!");
+        System.out.println("Inside the pizzeriaService destroy method!");
     }
 }
