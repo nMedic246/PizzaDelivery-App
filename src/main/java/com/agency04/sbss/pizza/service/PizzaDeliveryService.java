@@ -1,20 +1,19 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+@Service
 public class PizzaDeliveryService {
 
-    @Qualifier("dominos")
-    @Autowired
     private PizzeriaService pizzeriaService;
+
+    public PizzaDeliveryService(PizzeriaService pizzeriaLastrada) {
+        this.pizzeriaService = pizzeriaLastrada;
+    }
 
     public String orderPizza(Pizza pizza) throws InterruptedException {
         pizzeriaService.makePizza(pizza);
