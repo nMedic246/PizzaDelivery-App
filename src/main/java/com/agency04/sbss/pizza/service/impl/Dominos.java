@@ -2,12 +2,14 @@ package com.agency04.sbss.pizza.service.impl;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Service
+@Primary
 public class Dominos implements PizzeriaService {
 
     private String name;

@@ -11,8 +11,8 @@ public class PizzaDeliveryService {
 
     private PizzeriaService pizzeriaService;
 
-    public PizzaDeliveryService(PizzeriaService pizzeriaLastrada) {
-        this.pizzeriaService = pizzeriaLastrada;
+    public PizzaDeliveryService(PizzeriaService pizzeria) {
+        this.pizzeriaService = pizzeria;
     }
 
     public String orderPizza(Pizza pizza) throws InterruptedException {

@@ -7,6 +7,7 @@ public class Vegeteriana implements Pizza {
     private List<PizzaIngredient> ingredients = Arrays.asList(PizzaIngredient.TOMATO_SAUCE,PizzaIngredient.MOZZARELLA,
             PizzaIngredient.VEGETABLES);
 
+
     private final String name = "Vegeteriana";
 
     @Override
