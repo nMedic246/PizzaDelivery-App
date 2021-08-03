@@ -1,6 +1,5 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.config;
 
-import com.agency04.sbss.pizza.service.PizzaDeliveryService;
 import com.agency04.sbss.pizza.service.impl.PizzeriaLastrada;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.context.annotation.*;
@@ -10,13 +9,8 @@ import org.springframework.context.annotation.*;
 @PropertySource("classpath:application.properties")
 public class PizzaConfig {
 
-    /*@Bean
+    @Bean
     public PizzeriaService pizzeriaLastrada(){
        return new PizzeriaLastrada();
     }
-
-    @Bean
-    public PizzaDeliveryService pizzaDeliveryService(){
-        return new PizzaDeliveryService(pizzeriaLastrada());
-    }*/
 }

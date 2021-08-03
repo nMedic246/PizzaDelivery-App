@@ -2,6 +2,7 @@ package com.agency04.sbss.pizza.service.impl;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,13 @@ import javax.annotation.PreDestroy;
 @Primary
 public class Dominos implements PizzeriaService {
 
+    @Value("${dominos.name}")
     private String name;
 
+    @Value("${dominos.address}")
     private String address;
+
+    private String phoneNumber;
 
     @Override
     public String getName() {
@@ -36,6 +41,15 @@ public class Dominos implements PizzeriaService {
     }
 
     @Override
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
     public void makePizza(Pizza pizza) {
         System.out.println("Dominos team is preparing your "+pizza.getName()+"!");
     }
@@ -43,8 +57,7 @@ public class Dominos implements PizzeriaService {
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
-        this.setName("Dominos");
-        this.setAddress("Andrije Zaje 60");
+        this.setPhoneNumber("0996482299");
         System.out.println("Inside the Dominos init method!");
     }
 

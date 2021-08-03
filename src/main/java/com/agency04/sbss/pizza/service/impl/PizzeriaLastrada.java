@@ -2,17 +2,30 @@ package com.agency04.sbss.pizza.service.impl;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
-import org.springframework.stereotype.Service;
-
+import org.springframework.beans.factory.annotation.Value;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Service
+
 public class PizzeriaLastrada implements PizzeriaService {
 
+    @Value("${lastrada.name}")
     private String name;
 
+    @Value("${lastrada.address}")
     private String address;
+
+    private String phoneNumber;
+
+    @Override
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     @Override
     public String getName() {
@@ -42,8 +55,7 @@ public class PizzeriaLastrada implements PizzeriaService {
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
-        this.setName("Pizzeria Lastrada");
-        this.setAddress("Obala kneza Domagoja 56");
+        this.setPhoneNumber("098774471");
         System.out.println("Inside the pizzeria Lastrada init method!");
     }
 
