@@ -1,13 +1,20 @@
 package com.agency04.sbss.pizza.service.impl;
 
+<<<<<<< HEAD
 import com.agency04.sbss.pizza.model.pizzaPojos.*;
+=======
+import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+>>>>>>> main
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+=======
+>>>>>>> main
 
 
 public class PizzeriaLastrada implements PizzeriaService {
@@ -20,8 +27,11 @@ public class PizzeriaLastrada implements PizzeriaService {
 
     private String phoneNumber;
 
+<<<<<<< HEAD
     private List<MenuItem> menu = new ArrayList<>();
 
+=======
+>>>>>>> main
     @Override
     public String getPhoneNumber() {
         return this.phoneNumber;
@@ -57,6 +67,7 @@ public class PizzeriaLastrada implements PizzeriaService {
         System.out.println(pizza.getName()+" is making it's way to the oven!");
     }
 
+<<<<<<< HEAD
     public void addMenuItem(MenuItem item) {
         this.menu.add(item);
     }
@@ -66,12 +77,17 @@ public class PizzeriaLastrada implements PizzeriaService {
         return menu;
     }
 
+=======
+>>>>>>> main
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
         this.setPhoneNumber("098774471");
+<<<<<<< HEAD
         this.addMenuItem(new MenuItem(new Vegeteriana(), Set.of("Small","Medium","Jumbo")));
         this.addMenuItem(new MenuItem(new QuatroFormaggi(),Set.of("Medium","Jumbo")));
+=======
+>>>>>>> main
         System.out.println("Inside the pizzeria Lastrada init method!");
     }
 

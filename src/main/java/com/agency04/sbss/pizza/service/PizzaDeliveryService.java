@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,30 +20,42 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 >>>>>>> Stashed changes
+=======
+import org.springframework.stereotype.Service;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+>>>>>>> main
 
-@Component
+@Service
 public class PizzaDeliveryService {
 
-    @Qualifier("dominos")
-    @Autowired
     private PizzeriaService pizzeriaService;
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     List<DeliveryOrderForm> orderList = new ArrayList<>();
 
+=======
+>>>>>>> main
     public PizzaDeliveryService(PizzeriaService pizzeria) {
         this.pizzeriaService = pizzeria;
     }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
     public String orderPizza(Pizza pizza) throws InterruptedException {
         pizzeriaService.makePizza(pizza);
         Thread.sleep(2000);
         return pizza.getName() +" is on it's way :) !";
     }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> main
 
     //define my init method
     @PostConstruct
@@ -55,6 +68,7 @@ public class PizzaDeliveryService {
     public void doMyCleanupStuff(){
         System.out.println("Inside the pizzeriaService destroy method!");
     }
+<<<<<<< HEAD
 
     public PizzeriaService getCurrentPizzeriaService(){
         return this.pizzeriaService;
@@ -85,4 +99,6 @@ public class PizzaDeliveryService {
     }
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
 }

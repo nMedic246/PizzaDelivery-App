@@ -6,6 +6,8 @@ import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import java.util.List;
 
 public interface PizzeriaService {
+    String getPhoneNumber();
+    void setPhoneNumber(String phoneNumber);
     String getName();
     String getAddress();
     void setName(String name);
