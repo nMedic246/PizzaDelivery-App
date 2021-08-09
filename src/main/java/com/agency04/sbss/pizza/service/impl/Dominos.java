@@ -1,10 +1,7 @@
 package com.agency04.sbss.pizza.service.impl;
 
-<<<<<<< HEAD
 import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
 import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;
-=======
->>>>>>> main
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,12 +10,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-=======
->>>>>>> main
 
 @Service
 @Primary
@@ -32,11 +26,8 @@ public class Dominos implements PizzeriaService {
 
     private String phoneNumber;
 
-<<<<<<< HEAD
     private List<MenuItem> menu = new ArrayList<>();
 
-=======
->>>>>>> main
     @Override
     public String getName() {
         return this.name;
@@ -51,10 +42,7 @@ public class Dominos implements PizzeriaService {
     public void setName(String name) {
         this.name = name;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> main
     @Override
     public void setAddress(String address) {
         this.address = address;
@@ -64,10 +52,7 @@ public class Dominos implements PizzeriaService {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> main
     @Override
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -78,7 +63,6 @@ public class Dominos implements PizzeriaService {
         System.out.println("Dominos team is preparing your "+pizza.getName()+"!");
     }
 
-<<<<<<< HEAD
     public void addMenuItem(MenuItem item) {
         this.menu.add(item);
     }
@@ -88,18 +72,12 @@ public class Dominos implements PizzeriaService {
     }
 
 
-=======
->>>>>>> main
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
         this.setPhoneNumber("0996482299");
-<<<<<<< HEAD
         this.addMenuItem(new MenuItem(new Margherita(), Set.of("Small","Medium","Jumbo")));
         this.addMenuItem(new MenuItem(new Calzone(),Set.of("Medium")));
-=======
-        System.out.println("Inside the Dominos init method!");
->>>>>>> main
     }
 
     //define my destroy method
