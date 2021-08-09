@@ -9,6 +9,7 @@ public class PizzaApp {
 
     public static void main(String[] args) throws InterruptedException {
 
+<<<<<<< Updated upstream
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         PizzaDeliveryService pizzaDeliveryService  = context.getBean("pizzaDeliveryService",PizzaDeliveryService.class);
         Pizza pizza = context.getBean("quatroFormaggi",Pizza.class);
@@ -22,6 +23,8 @@ public class PizzaApp {
         System.out.println(pizzeriaService2.getName());
 
         context.close();
+=======
+>>>>>>> Stashed changes
     }
 
 }
