@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.rest.exceptionHandlers;
+package com.agency04.sbss.pizza.exceptionHandlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

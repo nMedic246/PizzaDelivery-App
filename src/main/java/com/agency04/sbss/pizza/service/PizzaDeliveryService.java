@@ -1,13 +1,11 @@
 package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
-import com.agency04.sbss.pizza.rest.exceptionHandlers.PizzaNotOnTheMenuException;
-import com.agency04.sbss.pizza.service.impl.DeliveryOrderForm;
-import com.agency04.sbss.pizza.service.impl.MenuItem;
-import com.agency04.sbss.pizza.service.util.PizzaFactory;
-import com.agency04.sbss.pizza.service.impl.PizzaOrder;
+import com.agency04.sbss.pizza.exceptionHandlers.PizzaNotOnTheMenuException;
+import com.agency04.sbss.pizza.form.DeliveryOrderForm;
+import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.PizzaOrder;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.lang.reflect.InvocationTargetException;
@@ -49,20 +47,18 @@ public class PizzaDeliveryService {
 
     public void makeOrder(DeliveryOrderForm deliveryOrderForm) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InterruptedException {
         for(PizzaOrder order : deliveryOrderForm.getOrders()){
-            Pizza pizza = PizzaFactory.newPizza(order.getPizza());
 
-            MenuItem menuItemPizza = pizzeriaService.getMenu().stream().filter(m->pizza.equals(m.getPizza())).findAny().orElse(null);
-
-            if(menuItemPizza==null){
-                System.out.println("Nema pizze");
-                throw new PizzaNotOnTheMenuException("This pizza is not on the menu!");
-            }
+            MenuItem menuItemPizza = pizzeriaService.getMenu()
+                                        .stream()
+                                        .filter(m-> m.getPizza().getName().equals(order.getPizzaName()))
+                                        .findAny()
+                                        .orElseThrow(()->new PizzaNotOnTheMenuException("This pizza is not on the menu!"));
 
             if(!menuItemPizza.getSizes().contains(order.getSize())){
-                throw new PizzaNotOnTheMenuException("This size for "+pizza.getName()+" is not on the menu!");
+                throw new PizzaNotOnTheMenuException("This size for "+order.getPizzaName()+" is not on the menu!");
             }
 
-            this.orderPizza(pizza);
+            this.orderPizza(menuItemPizza.getPizza());
         }
         orderList.add(deliveryOrderForm);
     }

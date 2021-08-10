@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.service.impl;
 
+import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.pizzaPojos.*;
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
@@ -65,6 +66,13 @@ public class PizzeriaLastrada implements PizzeriaService {
     @Override
     public List<MenuItem> getMenu() {
         return menu;
+    }
+
+    @Override
+    public String getDetails() {
+        return "Pizzeria : "+this.name +"\n"
+                + "Address : "+this.address +"\n"
+                + "Phone number : "+this.phoneNumber;
     }
 
 

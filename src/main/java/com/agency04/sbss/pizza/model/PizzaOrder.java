@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.service.impl;
+package com.agency04.sbss.pizza.model;
 
 public class PizzaOrder {
 
@@ -12,11 +12,11 @@ public class PizzaOrder {
         this.quantity = quantity;
     }
 
-    public String getPizza() {
-        return pizzaName;
+    public String getPizzaName() {
+        return this.pizzaName;
     }
 
-    public void setPizza(String pizzaName) {
+    public void setPizzaName(String pizzaName) {
         this.pizzaName = pizzaName;
     }
 

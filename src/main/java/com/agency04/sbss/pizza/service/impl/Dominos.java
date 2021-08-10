@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.service.impl;
 
+import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
 import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
@@ -7,7 +8,6 @@ import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
@@ -69,6 +69,13 @@ public class Dominos implements PizzeriaService {
     @Override
     public List<MenuItem> getMenu() {
         return menu;
+    }
+
+    @Override
+    public String getDetails() {
+        return "Pizzeria : "+this.name +"\n"
+                + "Address : "+this.address +"\n"
+                + "Phone number : "+this.phoneNumber;
     }
 
 

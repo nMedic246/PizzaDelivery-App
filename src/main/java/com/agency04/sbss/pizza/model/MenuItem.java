@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.service.impl;
+package com.agency04.sbss.pizza.model;
 
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 
@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class MenuItem {
 
     Pizza pizza;
-    Set<String> sizes = new TreeSet<>();
+    Set<String> sizes;
 
     public MenuItem(Pizza pizza, Set<String> sizes) {
         this.pizza = pizza;

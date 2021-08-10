@@ -1,9 +1,10 @@
 package com.agency04.sbss.pizza.rest;
 
 
-import com.agency04.sbss.pizza.rest.exceptionHandlers.CustomerNotFoundException;
+import com.agency04.sbss.pizza.exceptionHandlers.CustomerNotFoundException;
+import com.agency04.sbss.pizza.service.CustomerService;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;
-import com.agency04.sbss.pizza.service.impl.DeliveryOrderForm;
+import com.agency04.sbss.pizza.form.DeliveryOrderForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +19,11 @@ public class DeliveryController {
     PizzaDeliveryService pizzaDeliveryService;
 
     @Autowired
-    CustomerController customerController;
+    CustomerService customerService;
 
-    @PostMapping("")
+    @PostMapping("/order")
     public ResponseEntity<Object> createOrder(@RequestBody DeliveryOrderForm deliveryOrderForm) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InterruptedException {
-        if(!customerController.getCustomerList().contains(deliveryOrderForm.getCustomer())){
+        if(!customerService.checkCustomer(deliveryOrderForm.getCustomer())){
             throw new CustomerNotFoundException("Customer isn't registered!");
         }
         pizzaDeliveryService.makeOrder(deliveryOrderForm);
