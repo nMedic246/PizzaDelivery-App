@@ -1,13 +1,19 @@
 package com.agency04.sbss.pizza.service.impl;
 
+import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.PizzeriaDetails;
+import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
+import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Service
 @Primary
@@ -20,6 +26,8 @@ public class Dominos implements PizzeriaService {
     private String address;
 
     private String phoneNumber;
+
+    private List<MenuItem> menu = new ArrayList<>();
 
     @Override
     public String getName() {
@@ -35,6 +43,7 @@ public class Dominos implements PizzeriaService {
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public void setAddress(String address) {
         this.address = address;
@@ -44,6 +53,7 @@ public class Dominos implements PizzeriaService {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     @Override
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -54,11 +64,26 @@ public class Dominos implements PizzeriaService {
         System.out.println("Dominos team is preparing your "+pizza.getName()+"!");
     }
 
+    public void addMenuItem(MenuItem item) {
+        this.menu.add(item);
+    }
+    @Override
+    public List<MenuItem> getMenu() {
+        return menu;
+    }
+
+    @Override
+    public PizzeriaDetails getDetails() {
+        return new PizzeriaDetails(this.name,this.address,this.phoneNumber);
+    }
+
+
     //define my init method
     @PostConstruct
     public void doMyStartupStuff(){
         this.setPhoneNumber("0996482299");
-        System.out.println("Inside the Dominos init method!");
+        this.addMenuItem(new MenuItem(new Margherita(), Set.of("Small","Medium","Jumbo")));
+        this.addMenuItem(new MenuItem(new Calzone(),Set.of("Medium")));
     }
 
     //define my destroy method
