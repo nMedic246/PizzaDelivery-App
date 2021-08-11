@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.lang.reflect.InvocationTargetException;
 
 @RestController
 @RequestMapping("/api/delivery")
@@ -22,7 +21,7 @@ public class DeliveryController {
     CustomerService customerService;
 
     @PostMapping("/order")
-    public ResponseEntity<Object> createOrder(@RequestBody DeliveryOrderForm deliveryOrderForm) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InterruptedException {
+    public ResponseEntity<Object> createOrder(@RequestBody DeliveryOrderForm deliveryOrderForm) throws InterruptedException {
         if(!customerService.checkCustomer(deliveryOrderForm.getCustomer())){
             throw new CustomerNotFoundException("Customer isn't registered!");
         }

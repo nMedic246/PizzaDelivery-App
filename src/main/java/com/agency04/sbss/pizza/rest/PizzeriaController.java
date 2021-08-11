@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.rest;
 
 import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.PizzeriaDetails;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,12 +21,12 @@ public class PizzeriaController {
 
 
     @GetMapping("/")
-    public ResponseEntity<String> getDetails(){
+    public ResponseEntity<PizzeriaDetails> getDetails(){
         return ResponseEntity.status(HttpStatus.OK).body(pizzeriaService.getDetails());
     }
 
     @GetMapping("/menu")
-    public ResponseEntity<List<MenuItem>> orderPizza() throws InterruptedException {
+    public ResponseEntity<List<MenuItem>> orderPizza() {
         List<MenuItem> menu = pizzeriaService.getMenu();
 
         return ResponseEntity.status(HttpStatus.OK).body(menu);

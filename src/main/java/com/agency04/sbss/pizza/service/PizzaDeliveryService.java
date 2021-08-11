@@ -7,8 +7,7 @@ import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.PizzaOrder;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import java.lang.reflect.InvocationTargetException;
+import javax.annotation.PreDestroy;;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class PizzaDeliveryService {
         return this.pizzeriaService;
     }
 
-    public void makeOrder(DeliveryOrderForm deliveryOrderForm) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InterruptedException {
+    public void makeOrder(DeliveryOrderForm deliveryOrderForm) throws InterruptedException {
         for(PizzaOrder order : deliveryOrderForm.getOrders()){
 
             MenuItem menuItemPizza = pizzeriaService.getMenu()

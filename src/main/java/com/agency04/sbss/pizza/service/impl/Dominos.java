@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.service.impl;
 
 import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.PizzeriaDetails;
 import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
 import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;
 import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
@@ -72,10 +73,8 @@ public class Dominos implements PizzeriaService {
     }
 
     @Override
-    public String getDetails() {
-        return "Pizzeria : "+this.name +"\n"
-                + "Address : "+this.address +"\n"
-                + "Phone number : "+this.phoneNumber;
+    public PizzeriaDetails getDetails() {
+        return new PizzeriaDetails(this.name,this.address,this.phoneNumber);
     }
 
 
