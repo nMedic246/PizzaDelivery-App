@@ -1,16 +1,16 @@
 package com.agency04.sbss.pizza.service.impl;
 
-import com.agency04.sbss.pizza.model.MenuItem;
-import com.agency04.sbss.pizza.model.PizzeriaDetails;
+import com.agency04.sbss.pizza.helpers.MenuItem;
+import com.agency04.sbss.pizza.helpers.PizzeriaDetails;
+import com.agency04.sbss.pizza.model.PizzaSize;
 import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
 import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;
-import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -82,13 +82,8 @@ public class Dominos implements PizzeriaService {
     @PostConstruct
     public void doMyStartupStuff(){
         this.setPhoneNumber("0996482299");
-        this.addMenuItem(new MenuItem(new Margherita(), Set.of("Small","Medium","Jumbo")));
-        this.addMenuItem(new MenuItem(new Calzone(),Set.of("Medium")));
+        this.addMenuItem(new MenuItem(new Margherita(), Set.of(PizzaSize.SMALL,PizzaSize.MEDIUM,PizzaSize.LARGE)));
+        this.addMenuItem(new MenuItem(new Calzone(),Set.of(PizzaSize.MEDIUM)));
     }
 
-    //define my destroy method
-    @PreDestroy
-    public void doMyCleanupStuff(){
-        System.out.println("Inside the Dominos destroy method!");
-    }
 }

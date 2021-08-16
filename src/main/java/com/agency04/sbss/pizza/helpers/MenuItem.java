@@ -1,15 +1,16 @@
-package com.agency04.sbss.pizza.model;
+package com.agency04.sbss.pizza.helpers;
 
-import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaSize;
 
 import java.util.Set;
 
 public class MenuItem {
 
     Pizza pizza;
-    Set<String> sizes;
+    Set<PizzaSize> sizes;
 
-    public MenuItem(Pizza pizza, Set<String> sizes) {
+    public MenuItem(Pizza pizza, Set<PizzaSize> sizes) {
         this.pizza = pizza;
         this.sizes = sizes;
     }
@@ -22,11 +23,11 @@ public class MenuItem {
         this.pizza = pizza;
     }
 
-    public Set<String> getSizes() {
+    public Set<PizzaSize> getSizes() {
         return sizes;
     }
 
-    public void setSizes(Set<String> sizes) {
+    public void setSizes(Set<PizzaSize> sizes) {
         this.sizes = sizes;
     }
 }

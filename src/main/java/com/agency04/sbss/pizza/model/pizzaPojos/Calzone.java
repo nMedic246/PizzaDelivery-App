@@ -1,10 +1,13 @@
 package com.agency04.sbss.pizza.model.pizzaPojos;
 
+import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaIngredient;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Calzone implements Pizza {
+
+public class Calzone extends Pizza {
     private final List<PizzaIngredient> ingredients = Arrays.asList(PizzaIngredient.TOMATO_SAUCE,PizzaIngredient.MOZZARELLA,
             PizzaIngredient.HAM,PizzaIngredient.ANCHOVIES,PizzaIngredient.OREGANO);
 
@@ -23,7 +26,8 @@ public class Calzone implements Pizza {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
+        if (!super.equals(o)) return false;
         Calzone calzone = (Calzone) o;
         return Objects.equals(ingredients, calzone.ingredients) &&
                 Objects.equals(name, calzone.name);
