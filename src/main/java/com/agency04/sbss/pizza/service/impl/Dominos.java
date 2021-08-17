@@ -1,7 +1,7 @@
 package com.agency04.sbss.pizza.service.impl;
 
-import com.agency04.sbss.pizza.helpers.MenuItem;
-import com.agency04.sbss.pizza.helpers.PizzeriaDetails;
+import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.PizzeriaDetails;
 import com.agency04.sbss.pizza.model.PizzaSize;
 import com.agency04.sbss.pizza.model.pizzaPojos.Calzone;
 import com.agency04.sbss.pizza.model.pizzaPojos.Margherita;

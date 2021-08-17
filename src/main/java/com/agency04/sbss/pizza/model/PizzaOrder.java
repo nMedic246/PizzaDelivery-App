@@ -1,5 +1,7 @@
 package com.agency04.sbss.pizza.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -14,6 +16,7 @@ public class PizzaOrder {
     private Pizza pizza;
 
     @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnore
     private Delivery delivery;
 
     @Enumerated(EnumType.STRING)

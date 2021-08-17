@@ -1,6 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.dao.PizzaRepository;
+import com.agency04.sbss.pizza.repository.PizzaRepository;
 import com.agency04.sbss.pizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

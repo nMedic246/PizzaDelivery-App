@@ -1,4 +1,4 @@
-package com.agency04.sbss.pizza.helpers;
+package com.agency04.sbss.pizza.model;
 
 
 public class PizzeriaDetails {

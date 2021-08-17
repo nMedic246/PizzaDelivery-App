@@ -1,6 +1,6 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.dao.CustomerRepository;
+import com.agency04.sbss.pizza.repository.CustomerRepository;
 import com.agency04.sbss.pizza.exceptionHandlers.CustomerNotFoundException;
 import com.agency04.sbss.pizza.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class CustomerService {
             throw new CustomerNotFoundException("Customer with the given username does not exist!");
         }
 
-        customerRepository.updateCustomer(updatedCustomer.getUsername(),updatedCustomer.getCustomerDetails());
+        customerRepository.save(updatedCustomer);
     }
 
     public void deleteCustomer(String username){

@@ -1,5 +1,7 @@
 package com.agency04.sbss.pizza.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +15,7 @@ public class Delivery {
     private long deliveryId;
 
     @ManyToOne
+    @JsonIgnore
     private Customer customer;
 
     private Date submissionDate;

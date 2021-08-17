@@ -1,7 +1,7 @@
 package com.agency04.sbss.pizza;
 
 import com.agency04.sbss.pizza.form.DeliveryOrderForm;
-import com.agency04.sbss.pizza.helpers.MenuItem;
+import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.*;
 import com.agency04.sbss.pizza.service.CustomerService;
 import com.agency04.sbss.pizza.service.PizzaDeliveryService;

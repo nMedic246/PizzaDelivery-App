@@ -1,11 +1,11 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.dao.CustomerRepository;
-import com.agency04.sbss.pizza.dao.DeliveryRepository;
-import com.agency04.sbss.pizza.dao.PizzaOrderRepository;
-import com.agency04.sbss.pizza.dao.PizzaRepository;
+import com.agency04.sbss.pizza.repository.CustomerRepository;
+import com.agency04.sbss.pizza.repository.DeliveryRepository;
+import com.agency04.sbss.pizza.repository.PizzaOrderRepository;
+import com.agency04.sbss.pizza.repository.PizzaRepository;
 import com.agency04.sbss.pizza.exceptionHandlers.CustomerNotFoundException;
-import com.agency04.sbss.pizza.helpers.MenuItem;
+import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.Delivery;
 import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.exceptionHandlers.PizzaNotOnTheMenuException;
