@@ -2,16 +2,18 @@ package com.agency04.sbss.pizza.service.impl;
 
 import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.PizzeriaDetails;
+import com.agency04.sbss.pizza.model.PizzaSize;
 import com.agency04.sbss.pizza.model.pizzaPojos.*;
-import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class PizzeriaLastrada implements PizzeriaService {
 
     @Value("${lastrada.name}")
@@ -80,16 +82,9 @@ public class PizzeriaLastrada implements PizzeriaService {
     public void doMyStartupStuff(){
         this.setPhoneNumber("098774471");
 
-        this.addMenuItem(new MenuItem(new Vegeteriana(), Set.of("Small","Medium","Jumbo")));
-        this.addMenuItem(new MenuItem(new QuatroFormaggi(),Set.of("Medium","Jumbo")));
-
-        System.out.println("Inside the pizzeria Lastrada init method!");
+        this.addMenuItem(new MenuItem(new Vegeteriana(), Set.of(PizzaSize.SMALL,PizzaSize.MEDIUM,PizzaSize.LARGE)));
+        this.addMenuItem(new MenuItem(new QuatroFormaggi(),Set.of(PizzaSize.MEDIUM,PizzaSize.LARGE)));
     }
 
-    //define my destroy method
-    @PreDestroy
-    public void doMyCleanupStuff(){
-        System.out.println("Inside the pizzeria Lastrada destroy method!");
-    }
 
 }

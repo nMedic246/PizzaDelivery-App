@@ -1,53 +1,30 @@
 package com.agency04.sbss.pizza.model;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Customer {
 
-    private String firstName;
-    private String lastName;
+    @Id
     private String username;
-    private String phoneNumber;
-    private String address;
 
-    public Customer(String firstName, String lastName,String username, String phoneNumber, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="customer_details_id")
+    private CustomerDetails customerDetails;
+
+    @OneToMany(mappedBy = "customer",
+            cascade = CascadeType.ALL)
+    private List<Delivery> deliveries;
+
+    public Customer(String username, CustomerDetails customerDetails , List<Delivery> deliveries) {
         this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.customerDetails = customerDetails;
+        this.deliveries = deliveries;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public Customer() {
     }
 
     public String getUsername() {
@@ -58,16 +35,34 @@ public class Customer {
         this.username = username;
     }
 
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+
+    public List<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(username, customer.username);
+        return Objects.equals(username, customer.username) &&
+                Objects.equals(customerDetails, customer.customerDetails) &&
+                Objects.equals(deliveries, customer.deliveries);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username);
+        return Objects.hash(username, customerDetails, deliveries);
     }
 }

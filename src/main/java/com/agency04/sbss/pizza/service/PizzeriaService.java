@@ -2,7 +2,7 @@ package com.agency04.sbss.pizza.service;
 
 import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.PizzeriaDetails;
-import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.model.Pizza;
 
 import java.util.List;
 

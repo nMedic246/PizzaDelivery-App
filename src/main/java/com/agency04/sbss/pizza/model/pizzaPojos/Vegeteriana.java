@@ -1,10 +1,13 @@
 package com.agency04.sbss.pizza.model.pizzaPojos;
 
+import com.agency04.sbss.pizza.model.Pizza;
+import com.agency04.sbss.pizza.model.PizzaIngredient;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Vegeteriana implements Pizza {
+public class Vegeteriana extends Pizza {
     private List<PizzaIngredient> ingredients = Arrays.asList(PizzaIngredient.TOMATO_SAUCE,PizzaIngredient.MOZZARELLA,
             PizzaIngredient.VEGETABLES);
 
@@ -24,7 +27,8 @@ public class Vegeteriana implements Pizza {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
+        if (!super.equals(o)) return false;
         Vegeteriana that = (Vegeteriana) o;
         return Objects.equals(ingredients, that.ingredients) &&
                 Objects.equals(name, that.name);

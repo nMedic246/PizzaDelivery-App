@@ -1,22 +1,40 @@
 package com.agency04.sbss.pizza.service;
 
-import com.agency04.sbss.pizza.model.pizzaPojos.Pizza;
+import com.agency04.sbss.pizza.repository.CustomerRepository;
+import com.agency04.sbss.pizza.repository.DeliveryRepository;
+import com.agency04.sbss.pizza.repository.PizzaOrderRepository;
+import com.agency04.sbss.pizza.repository.PizzaRepository;
+import com.agency04.sbss.pizza.exceptionHandlers.CustomerNotFoundException;
+import com.agency04.sbss.pizza.model.MenuItem;
+import com.agency04.sbss.pizza.model.Delivery;
+import com.agency04.sbss.pizza.model.Pizza;
 import com.agency04.sbss.pizza.exceptionHandlers.PizzaNotOnTheMenuException;
 import com.agency04.sbss.pizza.form.DeliveryOrderForm;
-import com.agency04.sbss.pizza.model.MenuItem;
 import com.agency04.sbss.pizza.model.PizzaOrder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaDeliveryService {
 
     private PizzeriaService pizzeriaService;
 
-    List<DeliveryOrderForm> orderList = new ArrayList<>();
+    @Autowired
+    private DeliveryRepository deliveryRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private PizzaRepository pizzaRepository;
+
+    @Autowired
+    private PizzaOrderRepository pizzaOrderRepository;
+
 
     public PizzaDeliveryService(PizzeriaService pizzeria) {
         this.pizzeriaService = pizzeria;
@@ -28,42 +46,41 @@ public class PizzaDeliveryService {
         return pizza.getName() +" is on it's way :) !";
     }
 
-    //define my init method
-    @PostConstruct
-    public void doMyStartupStuff(){
-        System.out.println("Inside the pizzeriaService init method!");
-    }
-
-    //define my destroy method
-    @PreDestroy
-    public void doMyCleanupStuff(){
-        System.out.println("Inside the pizzeriaService destroy method!");
-    }
 
     public PizzeriaService getCurrentPizzeriaService(){
         return this.pizzeriaService;
     }
 
     public void makeOrder(DeliveryOrderForm deliveryOrderForm) throws InterruptedException {
-        for(PizzaOrder order : deliveryOrderForm.getOrders()){
 
+        if(!customerRepository.existsById(deliveryOrderForm.getCustomer().getUsername())){
+            throw new CustomerNotFoundException("Customer isn't registered!");
+        }
+
+        Delivery delivery = new Delivery(deliveryOrderForm.getCustomer(),new Date());
+        deliveryRepository.save(delivery);
+
+        for(PizzaOrder order : deliveryOrderForm.getOrders()){
             MenuItem menuItemPizza = pizzeriaService.getMenu()
                                         .stream()
-                                        .filter(m-> m.getPizza().getName().equals(order.getPizzaName()))
-                                        .findAny()
+                                        .filter(m-> m.getPizza().getName().equals(order.getPizza().getName())
+                                        )
+                                        .findFirst()
                                         .orElseThrow(()->new PizzaNotOnTheMenuException("This pizza is not on the menu!"));
 
             if(!menuItemPizza.getSizes().contains(order.getSize())){
-                throw new PizzaNotOnTheMenuException("This size for "+order.getPizzaName()+" is not on the menu!");
+                throw new PizzaNotOnTheMenuException("This size for "+order.getPizza().getName()+" is not on the menu!");
             }
 
             this.orderPizza(menuItemPizza.getPizza());
+            PizzaOrder o = new PizzaOrder(pizzaRepository.findByName(order.getPizza().getName()),order.getSize(),order.getQuantity());
+            o.setDelivery(delivery);
+            pizzaOrderRepository.save(o);
         }
-        orderList.add(deliveryOrderForm);
     }
 
-    public List<DeliveryOrderForm> getCurrentOrders(){
-        return this.orderList;
+    public List<Delivery> getCurrentOrders(){
+        return deliveryRepository.findAll();
     }
 
 }
