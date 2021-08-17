@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaDeliveryService {
@@ -55,7 +56,9 @@ public class PizzaDeliveryService {
         if(!customerRepository.existsById(deliveryOrderForm.getCustomer().getUsername())){
             throw new CustomerNotFoundException("Customer isn't registered!");
         }
-        List<PizzaOrder> orders = new ArrayList<>();
+
+        Delivery delivery = new Delivery(deliveryOrderForm.getCustomer(),new Date());
+        deliveryRepository.save(delivery);
 
         for(PizzaOrder order : deliveryOrderForm.getOrders()){
             MenuItem menuItemPizza = pizzeriaService.getMenu()
@@ -71,14 +74,9 @@ public class PizzaDeliveryService {
 
             this.orderPizza(menuItemPizza.getPizza());
             PizzaOrder o = new PizzaOrder(pizzaRepository.findByName(order.getPizza().getName()),order.getSize(),order.getQuantity());
-
+            o.setDelivery(delivery);
             pizzaOrderRepository.save(o);
-            orders.add(o);
         }
-
-        Delivery delivery = new Delivery(deliveryOrderForm.getCustomer(),new Date());
-
-        deliveryRepository.save(delivery);
     }
 
     public List<Delivery> getCurrentOrders(){
